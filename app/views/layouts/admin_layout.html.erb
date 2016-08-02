@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BlogApp</title>
+   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+   <%= csrf_meta_tags %>
+
+<style>
+.test{
+	text-align: center;
+}
+</style>
+
+</head>
+<body>
+<% if user_signed_in? %>
+	<p align="right"><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
+
+
+
+
