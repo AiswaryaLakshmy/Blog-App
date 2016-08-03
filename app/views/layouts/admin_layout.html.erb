@@ -7,9 +7,18 @@
    <%= csrf_meta_tags %>
 
 <style>
-.test{
-	text-align: center;
-}
+	td,th{
+  		width:20%;
+  		text-align: left;
+  		 padding: 5px;
+  	}
+  	table, th, td {
+    	border: 1px solid black;
+    	border-collapse: collapse;
+    }
+    th {
+    text-align: left;
+    }
 </style>
 
 </head>
@@ -17,6 +26,7 @@
 <% if user_signed_in? %>
 	<p align="right"><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
 <% end %>
+<%= link_to 'Article List', admin_articles_path %>
 
 <%= yield %>
 

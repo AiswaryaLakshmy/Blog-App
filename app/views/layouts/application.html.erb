@@ -6,11 +6,30 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+<style>
+	td,th{
+  		width:20%;
+  		text-align: left;
+  		 padding: 5px;
+  	}
+  	table, th, td {
+    	border: 1px solid black;
+    	border-collapse: collapse;
+    }
+    th {
+    text-align: left;
+    }
+</style>
+
 <body>
 
 <% if user_signed_in? %>
 	<p align="right"><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
 <% end %>
+
+
+
 
 <%= yield %>
 

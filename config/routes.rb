@@ -6,9 +6,17 @@ Rails.application.routes.draw do
   devise_for :users 
   
 
-  resources :articles
+  resources :articles do
+    member do
+      get 'submit_to_admin'
+      get 'approved_by_admin'
+      get 'rejected_by_admin'
+    end
+  end
+  get '/admin_articles' => 'articles#admin_articles'
 
   get '/dashboard' => 'welcome#dashboard'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
