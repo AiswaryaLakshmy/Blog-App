@@ -1,8 +1,17 @@
 class ArticlesController < ApplicationController
 	before_action :get_article, only: [ :show, :edit, :update, :destroy, :submit_to_admin, :approved_by_admin, :rejected_by_admin ]
 	skip_before_filter :authenticate_user!, only: [ :show ]
+
+	layout :get_layout
+	# layout 'user_layout', except: [ :admin_articles]
+	# layout 'admin_layout', only: [ :admin_articles ]
+
 	def index
-		@articles = current_user.articles
+		if current_user.user?
+			@articles = current_user.articles
+		else
+			redirect_to root_path
+		end
 	end
 
 	def show
@@ -10,7 +19,11 @@ class ArticlesController < ApplicationController
 	end
 
 	def new
-		@article = Article.new
+		if current_user.user?
+			@article = Article.new
+		else
+			redirect_to root_path
+		end	
 	end
 
 	def edit
@@ -18,12 +31,16 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		@article = current_user.articles.new(article_params)
-		if @article.save
-			@article.update(status: :active)
-			redirect_to @article
+		if current_user.user?
+			@article = current_user.articles.new(article_params)
+			if @article.save
+				@article.update(status: :active)
+				redirect_to articles_path
+			else
+				render 'new'
+			end
 		else
-			render 'new'
+			redirect_to root_path
 		end
 	end
 
@@ -58,9 +75,13 @@ class ArticlesController < ApplicationController
 	end
 
 	def admin_articles
-		@pending_articles = Article.where(status: 1)
-		@approved_articles = Article.where(status: 2)
-		@rejected_articles = Article.where(status: 3)
+		if current_user.admin?
+			@pending_articles = Article.where(status: 1)
+			@approved_articles = Article.where(status: 2)
+			@rejected_articles = Article.where(status: 3)
+		else
+			redirect_to root_path
+		end
 	end
 
 	private
@@ -72,5 +93,15 @@ class ArticlesController < ApplicationController
 		def article_params
 			params.require( :article ).permit(:title, :text )
 		end
+
+	def get_layout
+		if user_signed_in?
+			if current_user.admin?
+				"admin_layout"
+			else
+				"user_layout"
+			end
+		end
+	end
 
 end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'rejected_by_admin'
     end
   end
+  
   get '/admin_articles' => 'articles#admin_articles'
 
   get '/dashboard' => 'welcome#dashboard'

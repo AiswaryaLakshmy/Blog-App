@@ -1,5 +1,21 @@
+<h2 align="center">Article List</h2>
+<div>
 
-<table>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Pending</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Approved</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Rejected</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  
+   
+    
+ 
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+<table id="home">
 	<h3>Articles for approval</h3>
 	<tr>
 		<th>Title</th>
@@ -19,8 +35,10 @@
 	<% end %>	
 
 </table><br><br>
+</div>
 
-<table>
+ <div role="tabpanel" class="tab-pane" id="profile">
+<table id="profile">
 <h3>Approved Articles</h3>
 	<tr>
 		<th>Title</th>
@@ -37,8 +55,10 @@
 	<% end %>	
 
 </table><br><br>
+</div>
 
-<table>
+<div role="tabpanel" class="tab-pane" id="messages">
+<table id="messages">
 <h3>Rejected Articles</h3>
 	<tr>
 		<th>Title</th>
@@ -55,5 +75,11 @@
 	</tr>
 	<% end %>	
 </table>
+<br><br>
+</div>
 
-<%= link_to 'Back', dashboard_path %>
+ </div>
+
+</div>
+
+<%#= link_to 'Back', dashboard_path %>

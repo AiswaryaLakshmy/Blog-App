@@ -2,10 +2,9 @@
 <html>
 <head>
   <title>BlogApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+   <%= csrf_meta_tags %>
 
 <style>
 	td,th{
@@ -22,19 +21,18 @@
     }
 </style>
 
+</head>
 <body>
-
 <% if user_signed_in? %>
 	<p align="right"><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
 <% end %>
-
-
-
+<%= link_to 'Article List', admin_articles_path %>
 
 <%= yield %>
-<br><br>
-<footer>
-        <p>&copy; 7Nodes 2016</p>
-      </footer>
+
 </body>
 </html>
+
+
+
+

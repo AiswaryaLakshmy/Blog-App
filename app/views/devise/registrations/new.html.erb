@@ -1,4 +1,10 @@
-<blockquote><h2>Sign up</h2>
+<blockquote>
+<div class="page-header">
+<h1 align="center"; style="color:red">7 NODES BLOG</h1>
+<p align="right"><button type="button" class="btn btn-default navbar-btn">
+<%= link_to 'Blog', root_path %></button></p>
+</div>
+<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -21,7 +27,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
+  <br><div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>

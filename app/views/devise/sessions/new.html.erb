@@ -1,4 +1,10 @@
-<blockquote><h2>Log in</h2>
+<blockquote>
+<div class="page-header">
+<h1 align="center"; style="color:red">7 NODES BLOG</h1>
+<p align="right"><button type="button" class="btn btn-default navbar-btn">
+<%= link_to 'Blog', root_path %></button></p>
+</div>
+<h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -24,4 +30,6 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
 </blockquote>
